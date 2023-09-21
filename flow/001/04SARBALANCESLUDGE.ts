@@ -129,7 +129,7 @@ router.post('/04SARBALANCESLUDGE/UPDATEDATAVOLUME', async (req, res) => {
       //   output = 'ok';
       // }
    
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "D01NOitem": input['D01NOitem'], "D02NOitem": input['D02NOitem'], "data01_volum.volum": input['VOLUME01'], "data02_volum.volum": input['VOLUME02'], "data01_ans": input['Result01'], "data02_ans": input['Result02'] } });
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "D01NOitem": input['D01NOitem'], "D02NOitem": input['D02NOitem'], "data01_volum.volum": input['VOLUME01'], "data02_volum.volum": input['VOLUME02'], "data01_ans.ans": input['Result01'], "data02_ans.ans": input['Result02'] } });
      
 
       // else if (check1[0]['data']['W13'] == '') {
