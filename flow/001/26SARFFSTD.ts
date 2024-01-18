@@ -162,7 +162,7 @@ router.post('/26SARFFSTD/UPDATEDATAAREA', async (req, res) => {
     let check1 = await mongodbfind(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" });
     if (check1.length > 0) {
       if (check1[0]['data']['data_area'] == '') {
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data_area.area": input['DataPreview'] } });
+        // let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data_area.area": input['DataPreview'] } });
         output = 'ok';
       }
 
