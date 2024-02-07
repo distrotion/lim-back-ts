@@ -174,7 +174,8 @@ router.post('/05SARBALANCECW3L/UPDATEDATAAREA', async (req, res) => {
     let timestamp = Date.now();
     let neworder = input;
 
-    let check1 = await mongodbfind(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" });
+    let check1 = await mongodbfind(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" })
+    console.log(check1);
     if (check1.length > 0) {
       // if (check1[0]['data']['data_area'] == '') {
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data_area.area": input['DataPreview'] } });
