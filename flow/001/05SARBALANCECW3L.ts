@@ -170,7 +170,7 @@ router.post('/05SARBALANCECW3L/UPDATEDATAAREA', async (req, res) => {
   //-------------------------------------
   let output = 'nok';
   if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != '') {
-
+    console.log(input['ReqNo']);
     let timestamp = Date.now();
     let neworder = input;
 
