@@ -36,8 +36,10 @@ router.post('/06SARBALANCENVC/GENREQ', async (req, res) => {
       neworder['data02'] = {"W11": '', "W21": '', "W31": '',};
 
       neworder['data01_area'] = { "area": '' };
+      neworder['data02_area'] = { "area": '' };
 
       neworder['data01_ans'] = { "ans": '' };
+      neworder['data02_ans'] = { "ans": '' };
 
       let ins1 = await mongodbinsertMany(database, collection, [neworder]);
 
