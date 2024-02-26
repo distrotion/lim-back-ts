@@ -98,5 +98,27 @@ router.post('/GETLIST/request_CW3L_ALL', async (req, res) => {
   return res.json(output);
 });
 
+router.post('/GETLIST/request_NV_ALL', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName = '%NV' or InstrumentName = '%NV(WAX)' or InstrumentName = '%NV(Nox Rust)' order by ReqDate desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
 
 export default router;

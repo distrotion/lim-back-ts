@@ -32,7 +32,7 @@ router.post('/06SARBALANCENVC/GENREQ', async (req, res) => {
       neworder['LIMstatus'] = 'IP';
       neworder['LIMTYPE'] = '06SARBALANCENVC';
       neworder['INSNO'] = input['INSNO'];
-      neworder['data01'] = {"W11": '', "W21": '',};
+      neworder['data01'] = {"W11": '', "W21": '', "W31": '',};
 
       neworder['data01_area'] = { "area": '' };
 
@@ -78,11 +78,26 @@ router.post('/06SARBALANCENVC/UPDATEDATAWEIGHT', async (req, res) => {
       if(input['WX'] == 'D01W21'){
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W21": input['DataPreview'] } });
       }
+      if(input['WX'] == 'D01W31'){
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W31": input['DataPreview'] } });
+      }
       if(input['WX'] == 'D02W11'){
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W11": input['DataPreview'] } });
       }
       if(input['WX'] == 'D02W21'){
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
+      }
+      if(input['WX'] == 'D02W31'){
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W31": input['DataPreview'] } });
+      }
+      if(input['WX'] == 'D03W11'){
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W11": input['DataPreview'] } });
+      }
+      if(input['WX'] == 'D03W21'){
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
+      }
+      if(input['WX'] == 'D03W31'){
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W31": input['DataPreview'] } });
       }
 
      
@@ -202,6 +217,9 @@ router.post('/06SARBALANCENVC/DELETEDATAW11', async (req, res) => {
       }
       if(input['DX'] == 'D01W21'){
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W21": "" } });
+      }
+      if(input['DX'] == 'D01W31'){
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W1": "" } });
       }
 
     }
