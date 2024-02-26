@@ -130,7 +130,7 @@ router.post('/06SARBALANCENVC/UPDATEDATAAREA', async (req, res) => {
   let input = req.body;
   //-------------------------------------
   let output = 'nok';
-  if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != ''&& input['D01NOitem'] != undefined&& input['areaE01'] != undefined&& input['Result01'] != undefined&& input['D01W11_21'] != undefined) {
+  if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != ''&& input['D01NOitem']&& input['D02NOitem'] != undefined&& input['areaE01'] != undefined&& input['Result01'] != undefined&& input['Result02'] != undefined) {
 
     let timestamp = Date.now();
     let neworder = input;
@@ -147,7 +147,7 @@ router.post('/06SARBALANCENVC/UPDATEDATAAREA', async (req, res) => {
       //   output = 'ok';
       // }
    
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "D01NOitem": input['D01NOitem'], "data01_area.area": input['areaE01'], "data01_ans.ans": input['Result01'], "data01_area.D01W11_21": input['D01W11_21']} });
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "D01NOitem": input['D01NOitem'],"D02NOitem": input['D02NOitem'],  "data01_ans.ans": input['Result01'],  "data02_ans.ans": input['Result02']} });
      
         output = 'ok';
       // else if (check1[0]['data']['W13'] == '') {
@@ -166,32 +166,32 @@ router.post('/06SARBALANCENVC/UPDATEDATAAREA', async (req, res) => {
   res.json(output);
 });
 
-router.post('/06SARBALANCENVC/UPDATEDATAAREA', async (req, res) => {
-  //-------------------------------------
-  console.log("--06SARBALANCENVC/UPDATEDATAW11--");
-  console.log(req.body);
-  let input = req.body;
-  //-------------------------------------
-  let output = 'nok';
-  if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != '') {
+// router.post('/06SARBALANCENVC/UPDATEDATAAREA', async (req, res) => {
+//   //-------------------------------------
+//   console.log("--06SARBALANCENVC/UPDATEDATAW11--");
+//   console.log(req.body);
+//   let input = req.body;
+//   //-------------------------------------
+//   let output = 'nok';
+//   if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != '') {
 
-    let timestamp = Date.now();
-    let neworder = input;
+//     let timestamp = Date.now();
+//     let neworder = input;
 
-    let check1 = await mongodbfind(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" });
-    if (check1.length > 0) {
-      if (check1[0]['data']['data_area'] == '') {
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data_area.area": input['DataPreview'] } });
-        output = 'ok';
-      }
+//     let check1 = await mongodbfind(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" });
+//     if (check1.length > 0) {
+//       if (check1[0]['data']['data_area'] == '') {
+//         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data_area.area": input['DataPreview'] } });
+//         output = 'ok';
+//       }
 
-    }
+//     }
 
-  }
+//   }
 
-  //-------------------------------------
-  res.json(output);
-});
+//   //-------------------------------------
+//   res.json(output);
+// });
 
 router.post('/06SARBALANCENVC/DELETEDATAW11', async (req, res) => {
   //-------------------------------------
