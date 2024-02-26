@@ -222,7 +222,7 @@ router.post('/06SARBALANCENVC/DELETEDATAW11', async (req, res) => {
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W21": "" } });
       }
       if(input['DX'] == 'D01W31'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W1": "" } });
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W31": "" } });
       }
 
       if(input['DX'] == 'D02W11'){
@@ -232,7 +232,7 @@ router.post('/06SARBALANCENVC/DELETEDATAW11', async (req, res) => {
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": "" } });
       }
       if(input['DX'] == 'D02W31'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W1": "" } });
+        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W31": "" } });
       }
 
     }
