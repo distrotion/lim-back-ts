@@ -93,15 +93,15 @@ router.post('/06SARBALANCENVC/UPDATEDATAWEIGHT', async (req, res) => {
       if(input['WX'] == 'D02W31'){
         let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W31": input['DataPreview'] } });
       }
-      if(input['WX'] == 'D03W11'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W11": input['DataPreview'] } });
-      }
-      if(input['WX'] == 'D03W21'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
-      }
-      if(input['WX'] == 'D03W31'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W31": input['DataPreview'] } });
-      }
+      // if(input['WX'] == 'D03W11'){
+      //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W11": input['DataPreview'] } });
+      // }
+      // if(input['WX'] == 'D03W21'){
+      //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
+      // }
+      // if(input['WX'] == 'D03W31'){
+      //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W31": input['DataPreview'] } });
+      // }
 
      
 
