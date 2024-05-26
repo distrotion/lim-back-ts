@@ -30,6 +30,51 @@ router.post('/GETLIST/request_PH_ALL', async (req, res) => {
   return res.json(output);
 });
 
+router.post('/GETLIST/request_BALANCE_ALL', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE  ItemStatus='LIST NORMAL' and (InstrumentName ='pH') order by ID desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab] WHERE ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM')  AND InstrumentName IN ('ICP', 'Sludge', 'Acid Number(Nox Rust)', 'CO32-', 'Cwt', 'Cwt.3 layers', 'Cwt. PULS', 'Solid Content(Nox Rust)', 'SSM','%NV(WAX)','%NV(Nox Rust)','%NV') ORDER BY id DESC`
+    let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab] WHERE ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM')  AND InstrumentName IN ('ICP', 'Sludge', 'Acid Number(Nox Rust)', 'CO32-', 'Cwt', 'Cwt. PULS', 'Solid Content(Nox Rust)', 'SSM','%NV(WAX)','%NV(Nox Rust)','%NV') OR ( InstrumentName = 'Cwt.3 layers' AND  ItemReportName = 'Non-metallic Soap Layer (g/m2)' ) ORDER BY id DESC`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
+router.post('/GETLIST/requestbalance', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE  ItemStatus='LIST NORMAL' and (InstrumentName ='pH') order by ID desc`
+    let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab] WHERE ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM') AND UserListAnalysis = '${input['name']}' AND ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM')  AND InstrumentName IN ('ICP', 'Sludge', 'Acid Number(Nox Rust)', 'CO32-', 'Cwt', 'Cwt. PULS', 'Solid Content(Nox Rust)', 'SSM','%NV(WAX)','%NV(Nox Rust)','%NV') OR ( InstrumentName = 'Cwt.3 layers' AND  ItemReportName = 'Non-metallic Soap Layer (g/m2)' ) ORDER BY id DESC`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
 router.post('/GETLIST/request_FF_ALL', async (req, res) => {
   //-------------------------------------
   console.log(req.body);
@@ -132,6 +177,29 @@ router.post('/GETLIST/request_ICP_ALL', async (req, res) => {
 
     // console.log(mssql.qurey())
     let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName = 'ICP'  order by ReqDate desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
+router.post('/GETLIST/request_XRF_ALL', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  console.log(`-------request_XRF_ALL------`)
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName = 'XRF'  order by ReqDate desc`
     // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
     var findDB: any = await mssqlquery(query);
     let data: any = findDB['recordsets'][0];
