@@ -24,7 +24,7 @@ export async function  mssqlquery(input: string)  {
    .then((conn) => 
       conn.query(input)
          .then((v:any) => {
-          console.log(v)
+          // console.log(v)
           output = v
          
          })
