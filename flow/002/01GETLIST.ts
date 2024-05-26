@@ -235,6 +235,29 @@ router.post('/GETLIST/request_ICP_USER', async (req, res) => {
   return res.json(output);
 });
 
+router.post('/GETLIST/request_TOC_USER', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  console.log(`-------request_TOC_USER------`)
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM') AND InstrumentName IN ('TOC') AND UserListAnalysis = '${input['name']}'   order by ReqDate desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
 router.post('/GETLIST/request_XRF_ALL', async (req, res) => {
   //-------------------------------------
   console.log(req.body);
