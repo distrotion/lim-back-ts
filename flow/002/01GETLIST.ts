@@ -63,7 +63,7 @@ router.post('/GETLIST/requestbalance', async (req, res) => {
 
     // console.log(mssql.qurey())
     // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE  ItemStatus='LIST NORMAL' and (InstrumentName ='pH') order by ID desc`
-    let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab] WHERE ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM') AND UserListAnalysis = '${input['name']}' AND ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM')  AND InstrumentName IN ('ICP', 'Sludge', 'Acid Number(Nox Rust)', 'CO32-', 'Cwt', 'Cwt. PULS', 'Solid Content(Nox Rust)', 'SSM','%NV(WAX)','%NV(Nox Rust)','%NV') OR ( InstrumentName = 'Cwt.3 layers' AND  ItemReportName = 'Non-metallic Soap Layer (g/m2)' AND ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM')) ORDER BY id DESC`
+    let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab] WHERE ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM') AND UserListAnalysis = '${input['name']}' AND ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM')  AND InstrumentName IN ('ICP', 'Sludge', 'Acid Number(Nox Rust)', 'CO32-', 'Cwt', 'Cwt. PULS', 'Solid Content(Nox Rust)', 'SSM','%NV(WAX)','%NV(Nox Rust)','%NV') OR (  InstrumentName IN ('Cwt.3 layers') AND  ItemReportName = 'Non-metallic Soap Layer (g/m2)' AND UserListAnalysis = '${input['name']}' AND ItemStatus IN ('LIST NORMAL','LIST RECHECK','LIST RECONFIRM') ) ORDER BY id DESC`
     var findDB: any = await mssqlquery(query);
     let data: any = findDB['recordsets'][0];
     output = data;
