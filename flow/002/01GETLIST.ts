@@ -199,7 +199,7 @@ router.post('/GETLIST/request_ICP_ALL', async (req, res) => {
   if(input['name'] != undefined){
 
     // console.log(mssql.qurey())
-    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName IN ('ICP')   order by ReqDate desc`
+    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName IN ('ICP') and Branch != 'RAYONG'   order by ReqDate desc`
     // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
     var findDB: any = await mssqlquery(query);
     let data: any = findDB['recordsets'][0];
@@ -222,8 +222,9 @@ router.post('/GETLIST/request_TOC_ALL', async (req, res) => {
   if(input['name'] != undefined){
 
     // console.log(mssql.qurey())
-    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName IN ('TOC')   order by ReqDate desc`
-    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
+    let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName IN ('TOC') and Branch != 'RAYONG'    order by ReqDate desc`
+    // let query = `SELECT TOP (100) * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE InstrumentName IN ('TOC') and SampleCode = 'RTB-MKT-24-0763-3'  order by ReqDate desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc` 
     var findDB: any = await mssqlquery(query);
     let data: any = findDB['recordsets'][0];
     output = data;

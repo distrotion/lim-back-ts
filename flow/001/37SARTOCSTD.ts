@@ -32,8 +32,49 @@ router.post('/37SARTOCSTD/GENREQ', async (req, res) => {
       neworder['LIMstatus'] = 'IP';
       neworder['LIMTYPE'] = '37SARTOCSTD';
       neworder['INSNO'] = input['INSNO'];
-      neworder['data01'] = {"W11": '', };
-      neworder['data02'] = {"W11": '', };
+      neworder['data01'] = {
+        "TC": '', 
+        "IC": '', 
+        "DITC": '', 
+        "DIIC": '', 
+        
+      };
+      neworder['data02'] = {
+        "TC": '', 
+        "IC": '', 
+        "DITC": '', 
+        "DIIC": '', 
+        
+      };
+      neworder['data03'] = {
+        "TC": '', 
+        "IC": '', 
+        "DITC": '', 
+        "DIIC": '', 
+        
+      };
+      neworder['data04'] = {
+        "TC": '', 
+        "IC": '', 
+        "DITC": '', 
+        "DIIC": '', 
+        
+      };
+      neworder['data05'] = {
+        "TC": '', 
+        "IC": '', 
+        "DITC": '', 
+        "DIIC": '', 
+        
+      };
+      neworder['data06'] = {
+        "TC": '', 
+        "IC": '', 
+        "DITC": '', 
+        "DIIC": '', 
+        
+      };
+   
       neworder['data01_volum'] = { "volum": '' };
       neworder['data02_volum'] = { "volum": '' };
       neworder['data01_ans'] = { "ans": '' };
@@ -85,7 +126,19 @@ router.post('/37SARTOCSTD/UPDATEDATAPPM', async (req, res) => {
       // if(input['WX'] == 'D02W21'){
       //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
       // }
-      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview01'] , "data02.W11": input['DataPreview02'] } });
+      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { 
+        "data01.TC": input['DataPreview01']['TCR1'] , 
+        "data01.IC": input['DataPreview01']['ICR1'] , 
+        "data01.DITC": input['DataPreview01']['TCR1DI'] , 
+        "data01.DIIC": input['DataPreview01']['ICR1DI'] , 
+
+        "data02.TC": input['DataPreview01']['TCR1'] , 
+        "data02.IC": input['DataPreview01']['ICR1'] , 
+        "data02.DITC": input['DataPreview01']['TCR1DI'] , 
+        "data02.DIIC": input['DataPreview01']['ICR1DI'] , 
+     
+      
+      } });
      
 
 
@@ -196,15 +249,15 @@ router.post('/37SARTOCSTD/DELETEDATAW11', async (req, res) => {
       //   let ins2 = await mongodb.update(database, collection, { "ReqNo": neworder['ReqNo'], "LIMstatus": "IP" }, { $set: { "data.W13": '' } });
       //   output = 'ok';
       // }else 
-      if(input['DX'] == 'D01W11'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": "" } });
-      }
+      // if(input['DX'] == 'D01W11'){
+      //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": "" } });
+      // }
       // if(input['DX'] == 'D01W21'){
       //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W21": "" } });
       // }
-      if(input['DX'] == 'D02W11'){
-        let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W11": "" } });
-      }
+      // if(input['DX'] == 'D02W11'){
+      //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W11": "" } });
+      // }
       // if(input['DX'] == 'D02W21'){
       //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": "" } });
       // }
