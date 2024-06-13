@@ -132,10 +132,10 @@ router.post('/37SARTOCSTD/UPDATEDATAPPM', async (req, res) => {
         "data01.DITC": input['DataPreview01']['TCR1DI'] , 
         "data01.DIIC": input['DataPreview01']['ICR1DI'] , 
 
-        "data02.TC": input['DataPreview01']['TCR1'] , 
-        "data02.IC": input['DataPreview01']['ICR1'] , 
-        "data02.DITC": input['DataPreview01']['TCR1DI'] , 
-        "data02.DIIC": input['DataPreview01']['ICR1DI'] , 
+        "data02.TC": input['DataPreview01']['TCR2'] , 
+        "data02.IC": input['DataPreview01']['ICR2'] , 
+        "data02.DITC": input['DataPreview01']['TCR2DI'] , 
+        "data02.DIIC": input['DataPreview01']['ICR2DI'] , 
      
       
       } });
