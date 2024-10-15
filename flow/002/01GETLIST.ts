@@ -120,6 +120,50 @@ router.post('/GETLIST/request_FF_ALL', async (req, res) => {
   return res.json(output);
 });
 
+router.post('/GETLIST/request_IC_ALL', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE  ItemStatus='LIST NORMAL' and (InstrumentName ='IC') and [UserListAnalysis]='${input['name']}'  order by ID desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
+router.post('/GETLIST/request_UV_ALL', async (req, res) => {
+  //-------------------------------------
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  let output: any = []
+  if(input['name'] != undefined){
+
+    // console.log(mssql.qurey())
+    let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE  ItemStatus='LIST NORMAL' and (InstrumentName like'%UV%') and [UserListAnalysis]='${input['name']}'  order by ID desc`
+    // let query = `SELECT * FROM [SAR].[dbo].[Routine_RequestLab]  WHERE    (InstrumentName ='F-F') order by ID desc`
+    var findDB: any = await mssqlquery(query);
+    let data: any = findDB['recordsets'][0];
+    output = data;
+  }
+
+
+
+  //-------------------------------------
+  return res.json(output);
+});
+
 router.post('/GETLIST/request_PH', async (req, res) => {
   //-------------------------------------
   console.log(req.body);
