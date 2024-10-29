@@ -88,14 +88,17 @@ router.post('/LIMX/ICPSETDATA', async (req, res) => {
 
 router.post('/LIMX/UVSETDATA', async (req, res) => {
   //-------------------------------------
+  console.log("--------LIMX/UVSETDATA--------");
   console.log(req.body);
   let input = req.body
   //-------------------------------------
   if(input["DATA"]!=undefined){
     //
     for (let i = 0; i < input["DATA"].length; i++) {
-      let query = `INSERT INTO  [LIM].[dbo].[LIMX] ([ReqNo],[ReqNoBARCODE],[InstrumentName],[R],[DILUTIONTIMES-M],[DILUTIONTIMES-TC],[DILUTIONTIMES-IC],[TiUV],) VALUES ('${input["DATA"][i]['REQ']}','${input["DATA"][i]['code']}','Ti(UV)','${input["DATA"][i]['R']}','${input["DATA"][i]['DIM']}','${input["DATA"][i]['DI1']}','${input["DATA"][i]['DI2']}','${input["DATA"][i]['VALUE']}')`
+      let query = `INSERT INTO  [LIM].[dbo].[LIMX] ([ReqNo],[ReqNoBARCODE],[InstrumentName],[R],[DILUTIONTIMES-M],[DILUTIONTIMES-TC],[DILUTIONTIMES-IC],[TiUV]) VALUES ('${input["DATA"][i]['REQ']}','${input["DATA"][i]['code']}','Ti(UV)','${input["DATA"][i]['R']}','${input["DATA"][i]['DIM']}','${input["DATA"][i]['DI1']}','${input["DATA"][i]['DI2']}','${input["DATA"][i]['VALUE']}')`
       var findDB: any = await mssqlquery(query);
+
+
     }
     
     
