@@ -56,7 +56,7 @@ router.post('/42SAROCASTD/UPDATEDATAPPM', async (req, res) => {
   let input = req.body;
   //-------------------------------------
   let output = 'nok';
-  if (input['ReqNo'] != undefined && input['DataPreview01'] != undefined && input['ReqNo'] != ''&& input['WX'] != undefined && input['DataPreview02'] != undefined) {
+  if (input['ReqNo'] != undefined && input['DataPreview01'] != undefined && input['ReqNo'] != ''&& input['WX'] != undefined && input['DataPreview12'] != undefined) {
 
     let timestamp = Date.now();
     let neworder = input;
