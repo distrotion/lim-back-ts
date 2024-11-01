@@ -120,7 +120,7 @@ router.post('/LIMX/OCASETDATA', async (req, res) => {
   if(input["DATA"]!=undefined){
     //
     for (let i = 0; i < input["DATA"].length; i++) {
-      let query = `INSERT INTO  [LIM].[dbo].[LIMX] ([ReqNo],[ReqNoBARCODE],[InstrumentName],[R],[DILUTIONTIMES-M],[DILUTIONTIMES-TC],[DILUTIONTIMES-IC],[OCA01],[OCA02],[OCA03]) VALUES ('${input["DATA"][i]['REQ']}','${input["DATA"][i]['code']}','Ti(UV)','${input["DATA"][i]['R']}','${input["DATA"][i]['DIM']}','${input["DATA"][i]['DI1']}','${input["DATA"][i]['DI2']}','${input["DATA"][i]['VALUE01']}','${input["DATA"][i]['VALUE02']}','${input["DATA"][i]['VALUE03']}')`
+      let query = `INSERT INTO  [LIM].[dbo].[LIMX] ([ReqNo],[ReqNoBARCODE],[InstrumentName],[R],[DILUTIONTIMES-M],[DILUTIONTIMES-TC],[DILUTIONTIMES-IC],[OCA01],[OCA02],[OCA03]) VALUES ('${input["DATA"][i]['REQ']}','${input["DATA"][i]['code']}','OCA','${input["DATA"][i]['R']}','${input["DATA"][i]['DIM']}','${input["DATA"][i]['DI1']}','${input["DATA"][i]['DI2']}','${input["DATA"][i]['VALUE01']}','${input["DATA"][i]['VALUE02']}','${input["DATA"][i]['VALUE03']}')`
       var findDB: any = await mssqlquery(query);
 
 
