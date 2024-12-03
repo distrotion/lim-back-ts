@@ -19,6 +19,9 @@ import P3F01SARXRFSTD from "./flow/001/40SARXRFSTD";
 import P1F01SARUVSTD from "./flow/001/41SARUVSTD";
 import P1F01SAROCASTD from "./flow/001/42SAROCASTD";
 
+import P52SARICS2000STD from "./flow/001/52SARICS2000STD";
+import P53SARBP12IC8100EXSTD from "./flow/001/53SARBP12IC8100EXSTD";
+
 
 
 import P2F01GETLIST from "./flow/002/01GETLIST";
@@ -54,6 +57,9 @@ router.use(F07SARBALANCEACID);
 router.use(F08SARBALANCESSM);
 router.use(P2F01SARTOCSTD);
 router.use(P3F01SARXRFSTD);
+
+router.use(P52SARICS2000STD);
+router.use(P53SARBP12IC8100EXSTD);
 
 router.use(P3F101LIMX);
 // router.use(flow004flow004);
