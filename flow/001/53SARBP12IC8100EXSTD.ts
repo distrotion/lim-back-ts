@@ -56,8 +56,8 @@ router.post('/53SARIC8100EXSTD/UPDATEDATAPPM', async (req, res) => {
   let input = req.body;
   //-------------------------------------
   let output = 'nok';
-  if (input['ReqNo'] != undefined && input['DataPreview11'] != undefined && input['ReqNo'] != ''&& input['WX'] != undefined && input['DataPreview21'] != undefined) {
-
+  if (input['ReqNo'] != undefined && input['DataPreview11'] != undefined && input['ReqNo'] != ''&& input['DataPreview21'] != undefined) {
+//&& input['WX'] != undefined 
     let timestamp = Date.now();
     let neworder = input;
 
@@ -86,8 +86,8 @@ router.post('/53SARIC8100EXSTD/UPDATEDATAPPM', async (req, res) => {
       //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
       // }
 
-      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview11'] , "data02.W11": input['DataPreview21'], } });
-     
+      // let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview11'] , "data02.W11": input['DataPreview21'], } });
+      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview11'] , "data02.W11": input['DataPreview21'], "data01_volum.volum": input['D01NOitem'],"data02_volum.volum": input['D02NOitem'],} });
 
 
       // else if (check1[0]['data']['W13'] == '') {
@@ -114,8 +114,8 @@ router.post('/53SARIC8100EXSTD/UPDATEDATAVOLUME', async (req, res) => {
   let input = req.body;
   //-------------------------------------
   let output = 'nok';
-  if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != ''&& input['D01NOitem'] != undefined&& input['D02NOitem'] != undefined&& input['VOLUME01'] != undefined&& input['VOLUME02'] != undefined&& input['Result01'] != undefined&& input['D01W11_21'] != undefined&& input['D02W11_21'] != undefined) {
-
+  // if (input['ReqNo'] != undefined && input['DataPreview'] != undefined && input['ReqNo'] != ''&& input['D01NOitem'] != undefined&& input['D02NOitem'] != undefined&& input['VOLUME01'] != undefined&& input['VOLUME02'] != undefined&& input['Result01'] != undefined&& input['D01W11_21'] != undefined&& input['D02W11_21'] != undefined) {
+    if (input['ReqNo'] != undefined && input['DataPreview11'] != undefined && input['ReqNo'] != '' && input['DataPreview21'] != undefined) {
     let timestamp = Date.now();
     let neworder = input;
 
@@ -131,7 +131,9 @@ router.post('/53SARIC8100EXSTD/UPDATEDATAVOLUME', async (req, res) => {
       //   output = 'ok';
       // }
       // let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "D01NOitem": input['D01NOitem'], "D02NOitem": input['D02NOitem'], "data01_volum.volum": input['VOLUME01'], "data02_volum.volum": input['VOLUME02'], "data01_ans.ans": input['Result01'], "data02_ans.ans": input['Result02'], "data01_volum.D01W11_21": input['D01W11_21'], "data02_volum.D02W11_21": input['D02W11_21'] } });
+      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview11'] , "data02.W11": input['DataPreview21'], "data01_volum.volum": input['D01NOitem'],"data02_volum.volum": input['D02NOitem'],} });
       output = 'ok';
+
       // else if (check1[0]['data']['W13'] == '') {
       //   let ins2 = await mongodb.update(database, collection, { "ReqNo": neworder['ReqNo'], "LIMstatus": "IP" }, { $set: { "data.W13": input['DataPreview'] } });
       //   output = 'ok';
