@@ -85,7 +85,7 @@ router.post('/52SARICS2000STD/UPDATEDATAPPM', async (req, res) => {
       // if(input['WX'] == 'D02W21'){
       //   let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data02.W21": input['DataPreview'] } });
       // }
-      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview11'] , "data02.W11": input['DataPreview21'], } });
+      let ins2 = await mongodbupdate(database, collection, { "ReqNo": neworder['ReqNo'], "UID": neworder['UID'], "LIMstatus": "IP" }, { $set: { "data01.W11": input['DataPreview11'] , "data02.W11": input['DataPreview21'], "data01_volum.D01W11_21": input['D01W11_21'],"data02_volum.D01W11_21": input['D02W11_21'],} });
      
 
 
