@@ -183,5 +183,26 @@ router.post('/LIMX/ICS2000SETDATA', async (req, res) => {
   res.json(input);
 });
 
+router.post('/LIMX/ICS2100SETDATA', async (req, res) => {
+  //-------------------------------------
+  console.log("--------LIMX/ICS2100SETDATA--------");
+  console.log(req.body);
+  let input = req.body
+  //-------------------------------------
+  if(input["DATA"]!=undefined){
+    //
+    for (let i = 0; i < input["DATA"].length; i++) {
+      let query = `INSERT INTO  [LIM].[dbo].[LIMX] ([ReqNo],[ReqNoBARCODE],[InstrumentName],[R],[DILUTIONTIMES-M],[DILUTIONTIMES-TC],[DILUTIONTIMES-IC],[Fluoride_VALUE],[Chloride_VALUE],[Nitrate_VALUE],[Sulphate_VALUE],[Phosphate_VALUE],[P2O7_VALUE]) VALUES ('${input["DATA"][i]['REQ']}','${input["DATA"][i]['code']}','ICS2100','${input["DATA"][i]['R']}','${input["DATA"][i]['DIM']}','${input["DATA"][i]['DI1']}','${input["DATA"][i]['DI2']}','${input["DATA"][i]['Fluoride']}','${input["DATA"][i]['Chloride']}','${input["DATA"][i]['Nitrate']}','${input["DATA"][i]['Sulphate']}','${input["DATA"][i]['Phosphate']}','${input["DATA"][i]['P2O7']}')`
+      var findDB: any = await mssqlquery(query);
+    }
+  }
+  
+
+
+
+  //-------------------------------------
+  res.json(input);
+});
+
 
 export default router;
